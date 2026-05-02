@@ -6,7 +6,7 @@ NOTES: Hi! I'm a first-year university student learning how to code, and this is
 - label them as `todo` (need to do it), `in-progress` (working on it right now), or `done` (finished).
 - save your tasks in a file (`tasks.json`) and allow you to access them again later
 
-## 🛠️ Try it yourself (Step-by-Step Guide)
+## Try it yourself (Step-by-Step Guide)
 
 Want to see how it works? Follow these quick steps to create and manage tasks directly from your terminal:
 
