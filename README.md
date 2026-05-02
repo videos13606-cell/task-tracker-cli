@@ -8,4 +8,4 @@ NOTES: Hi! I'm a first-year university student learning how to code, and this is
 
 # Description
 **Honestly to save time describing everything, I'm just going to give you a link to the description of the project and you can follow how to do which and what: https://roadmap.sh/projects/task-tracker?fl=0
- (sorry if that's unethical/unacceptable)**
+ (sorry if that's unethical/unacceptable lol)**
