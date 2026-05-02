@@ -6,35 +6,40 @@ NOTES: Hi! I'm a first-year university student learning how to code, and this is
 - label them as `todo` (need to do it), `in-progress` (working on it right now), or `done` (finished).
 - save your tasks in a file (`tasks.json`) and allow you to access them again later
 
-## Try it yourself (Step-by-Step Guide)
+## How to try it yourself (Beginner-friendly Guide)
 
-Want to see how it works? Follow these quick steps to create and manage tasks directly from your terminal:
+Never used GitHub or a command terminal before? No problem! Here is a simple, step-by-step guide to test my program on your own computer.
 
-**Step 1:** Open your terminal (Command Prompt, PowerShell, or Bash) in the project folder.
+**Step 1: Get the code**
+Go to the top of this page, click the green **"<> Code"** button, and select **"Download ZIP"**. Extract (unzip) the downloaded folder somewhere easy to find, like your Desktop. Open the extracted folder.
 
-**Step 2:** Let's add our first task! Type:
-> `task-cli add "Apply for an internship"`
-Expected result: `Task added successfully (ID: 1)`
+**Step 2: Open the Command Terminal**
+Click on the address bar at the top of the folder window (where it says the folder path), delete the text, type `cmd`, and press **Enter**. A black screen (the terminal) will pop up. You are now ready!
 
-The program just created a `tasks.json` file in the same folder and saved your task there. Even if you turn off your computer, your task is safe!
+*(Note: Make sure you have the .NET SDK installed on your computer to run C# code).*
 
-**Step 3:** Let's see the list of all tasks. Type:
-> `task-cli list`
+**Step 3: Create a "secret" file**
+Let's create a file to protect. In the black terminal, type this exactly and press Enter:
+> `echo "Hello" > secret.txt`
+*(Result: You just created a text file named 'secret.txt' in the folder. This is the file we want to protect from hackers).*
 
-Here you will see your task, its ID number (1), its status (todo), and exactly when it was created).*
+**Step 4: Lock it in (Save the fingerprint)**
+Now, let's tell the program to remember exactly how this file looks. Type:
+> `dotnet run -- init secret.txt`
+*(Result: The program successfully saves a mathematical "fingerprint" of your file. If even a single byte changes later, the fingerprint won't match).*
 
-**Step 4:** Let's start working on the task! Let's change its status:
-> `task-cli mark-in-progress 1`
+**Step 5: Check if everything is safe**
+Let's make sure our file is untouched. Type:
+> `dotnet run -- check secret.txt`
+*(Result: You will see **Status: Unmodified**. This means nobody has messed with your file).*
 
-We use ID number 1 to tell the program exactly which task we are
-changing. If you run `task-cli list` again, you will see that the status is now updated).
+**Step 6: Play the Hacker!**
+Let's simulate an attack. Open the `secret.txt` file normally with Notepad, add an extra space or change "Hello" to "Hello!", and save it. 
 
-**Step 5:** We finished the job. Let's mark it as done:
-> `task-cli mark-done 1`
-
-**Step 6 (Optional):** If you don't need the task anymore, you can just delete it from the list forever:
-> `task-cli delete 1`
-
+**Step 7: Catch the change**
+Run the check command one more time in the terminal:
+> `dotnet run -- check secret.txt`
+*(Result: You will see **Status: Modified (Hash mismatch)**. The program instantly caught the unauthorized change because the new fingerprint doesn't match the original one!)*
 If you open the `tasks.json` file now, you will see that 
 the task is completely removed from the database).
 
