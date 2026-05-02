@@ -14,7 +14,7 @@ Want to see how it works? Follow these quick steps to create and manage tasks di
 
 **Step 2:** Let's add our first task! Type:
 > `task-cli add "Apply for an internship"`
-**Expected result:** `Task added successfully (ID: 1)`
+Expected result: `Task added successfully (ID: 1)`
 
 The program just created a `tasks.json` file in the same folder and saved your task there. Even if you turn off your computer, your task is safe!
 
