@@ -6,42 +6,37 @@ NOTES: Hi! I'm a first-year university student learning how to code, and this is
 - label them as `todo` (need to do it), `in-progress` (working on it right now), or `done` (finished).
 - save your tasks in a file (`tasks.json`) and allow you to access them again later
 
-## How to try it yourself (Beginner-friendly Guide)
+## 🛠️ How to try it yourself (Beginner-friendly Guide)
 
-Never used GitHub or a command terminal before? No problem! Here is a simple, step-by-step guide to test my program on your own computer.
+If you are not a developer and want to see how this works, follow these simple steps. We will use the Command Terminal to add and manage tasks.
 
 **Step 1: Get the code**
-Go to the top of this page, click the green **"<> Code"** button, and select **"Download ZIP"**. Extract (unzip) the downloaded folder somewhere easy to find, like your Desktop. Open the extracted folder.
+Click the green **"<> Code"** button at the top of this GitHub page and choose **"Download ZIP"**. Unzip the folder on your Desktop and open it.
 
 **Step 2: Open the Command Terminal**
-Click on the address bar at the top of the folder window (where it says the folder path), delete the text, type `cmd`, and press **Enter**. A black screen (the terminal) will pop up. You are now ready!
+Click on the folder's address bar at the top, type `cmd`, and press **Enter**. A black terminal window will open up. You are now inside the project!
 
-*(Note: Make sure you have the .NET SDK installed on your computer to run C# code).*
+*(Note: You will need the .NET SDK installed on your PC to run the commands below).*
 
-**Step 3: Create a "secret" file**
-Let's create a file to protect. In the black terminal, type this exactly and press Enter:
-> `echo "Hello" > secret.txt`
-*(Result: You just created a text file named 'secret.txt' in the folder. This is the file we want to protect from hackers).*
+**Step 3: Add your first task**
+Let's imagine you need to remember to buy groceries. In the terminal, type this and press Enter:
+> `dotnet run -- add "Buy milk and eggs"`
+*(Result: You will see **Task added successfully (ID: 1)**. The program just created a hidden `tasks.json` file in your folder to save your task. Even if you restart your PC, it will remember it!)*
 
-**Step 4: Lock it in (Save the fingerprint)**
-Now, let's tell the program to remember exactly how this file looks. Type:
-> `dotnet run -- init secret.txt`
-*(Result: The program successfully saves a mathematical "fingerprint" of your file. If even a single byte changes later, the fingerprint won't match).*
+**Step 4: View your task list**
+Let's check what tasks we have. Type:
+> `dotnet run -- list`
+*(Result: The terminal will print out your tasks. You will see your grocery task with an ID of 1, its status [todo], and the exact time you created it).*
 
-**Step 5: Check if everything is safe**
-Let's make sure our file is untouched. Type:
-> `dotnet run -- check secret.txt`
-*(Result: You will see **Status: Unmodified**. This means nobody has messed with your file).*
+**Step 5: Update the task**
+Let's say you just came back from the store and bought the milk. Let's mark the task as finished. Type:
+> `dotnet run -- mark-done 1`
+*(Result: The program updates task number 1. If you type the `dotnet run -- list` command again, you will see the status has changed from "todo" to "done").*
 
-**Step 6: Play the Hacker!**
-Let's simulate an attack. Open the `secret.txt` file normally with Notepad, add an extra space or change "Hello" to "Hello!", and save it. 
-
-**Step 7: Catch the change**
-Run the check command one more time in the terminal:
-> `dotnet run -- check secret.txt`
-*(Result: You will see **Status: Modified (Hash mismatch)**. The program instantly caught the unauthorized change because the new fingerprint doesn't match the original one!)*
-If you open the `tasks.json` file now, you will see that 
-the task is completely removed from the database).
+**Step 6: Clean up (Delete)**
+If you want to clear your list and delete the task forever, simply type:
+> `dotnet run -- delete 1`
+*(Result: The task is completely erased from the database).*
 
 # Description
 **Honestly to save time describing everything, I'm just going to give you a link to the description of the project and you can follow how to do which and what: https://roadmap.sh/projects/task-tracker?fl=0
