@@ -1,11 +1,12 @@
 ﻿using TaskCli;
 using System.Text.Json;
 
-// File path for our tasks notebook
+
 string filePath = "tasks.json";
 
-// Load existing tasks from file (if it exists)
 List<TaskItem> tasks = new List<TaskItem>();
+
+
 if (File.Exists(filePath))
 {
     string jsonString = File.ReadAllText(filePath);
@@ -15,17 +16,16 @@ if (File.Exists(filePath))
     }
 }
 
-// Find the next available ID
 int nextId = tasks.Count > 0 ? tasks.Max(t => t.Id) + 1 : 1;
 
-// Save tasks to the JSON file
+
 void SaveTasks()
 {
     string jsonString = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
     File.WriteAllText(filePath, jsonString);
 }
 
-// Read the user's command
+
 if (args.Length == 0)
 {
     Console.WriteLine("Please provide a command. Example: task-cli add \"Buy groceries\"");
@@ -53,9 +53,10 @@ if (command == "add")
     SaveTasks();
     Console.WriteLine($"Task added successfully (ID: {newTask.Id})");
 }
+
+
 else if (command == "list")
 {
-    // Check for status filter
     string? filter = args.Length > 1 ? args[1].ToLower() : null;
 
     List<TaskItem> filteredTasks;
@@ -79,6 +80,8 @@ else if (command == "list")
         Console.WriteLine($"[{task.Id}] [{task.Status}] {task.Description}");
     }
 }
+
+
 else if (command == "update")
 {
     if (args.Length < 3)
@@ -105,6 +108,8 @@ else if (command == "update")
     SaveTasks();
     Console.WriteLine($"Task {id} updated successfully.");
 }
+
+
 else if (command == "delete")
 {
     if (args.Length < 2)
@@ -130,6 +135,8 @@ else if (command == "delete")
     SaveTasks();
     Console.WriteLine($"Task {id} deleted successfully.");
 }
+
+
 else if (command == "mark-in-progress")
 {
     if (args.Length < 2)
@@ -156,6 +163,8 @@ else if (command == "mark-in-progress")
     SaveTasks();
     Console.WriteLine($"Task {id} marked as in-progress.");
 }
+
+
 else if (command == "mark-done")
 {
     if (args.Length < 2)
@@ -182,6 +191,8 @@ else if (command == "mark-done")
     SaveTasks();
     Console.WriteLine($"Task {id} marked as done.");
 }
+
+
 else
 {
     Console.WriteLine($"Unknown command: '{command}'.");
